@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.recetario.components.DescripcionReceta
 import com.example.recetario.components.ImagenReceta
 import com.example.recetario.components.PasosReceta
@@ -37,7 +38,7 @@ data class RecipeDetails(
 )
 
 @Composable
-fun RecipeView(nombreReceta: String) {
+fun RecipeView(nombreReceta: String, navHostController: NavHostController) {
     val detalles = obtenerDetallesReceta(nombreReceta)
 
     Column(
@@ -48,9 +49,8 @@ fun RecipeView(nombreReceta: String) {
     ) {
         Row(modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 40.dp)
-            .shadow(30.dp)) {
-            TitleBar(name = nombreReceta)
+            .padding(top = 40.dp)) {
+            TitleBar(name = nombreReceta, navController = navHostController)
         }
 
         Spacer(Modifier.size(30.dp))

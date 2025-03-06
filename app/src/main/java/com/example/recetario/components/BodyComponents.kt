@@ -1,27 +1,27 @@
 package com.example.recetario.components
 
-import android.graphics.drawable.Drawable
-import android.icu.util.Measure
-import android.icu.util.MeasureUnit
-import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -42,9 +42,21 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 
 @Composable
-fun TitleBar(name : String) {
-    Text(text = name, fontSize = 30.sp, color = Color.Black, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center,
-        modifier = Modifier.fillMaxWidth())
+fun TitleBar(name : String, navController: NavHostController) {
+    Box ( ) {
+        Text(text = name, fontSize = 30.sp, color = Color.Black, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth())
+        FloatingActionButton(
+            onClick = { navController.popBackStack() },
+            containerColor = Color.White,
+            contentColor = Color.Black,
+            modifier = Modifier.offset(y = -10.dp),
+            shape = CircleShape
+        ) {
+            Icon(Icons.Filled.Close, contentDescription = "Close")
+        }
+    }
+
 }
 
 @Composable

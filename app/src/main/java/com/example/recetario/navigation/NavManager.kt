@@ -16,7 +16,7 @@ fun NavManager () {
         }
         composable(route = "detallesReceta/{nombreReceta}") { backStackEntry ->
             val nombre = backStackEntry.arguments?.getString("nombreReceta") ?: ""
-            RecipeView(nombre) // Pantalla de detalles de la receta
+            RecipeView(nombre, navController) // Pantalla de detalles de la receta
         }
     }
 }
